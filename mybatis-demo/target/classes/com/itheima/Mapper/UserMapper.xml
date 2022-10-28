@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace:名称空间
+-->
+<mapper namespace="com.itheima.Mapper.UserMapper">
+    <resultMap id="userResultMapper" type="user">
+        <result column="username" property="userName"/>
+        <result column="password" property="passWord"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="userResultMapper">/*使用别名代替，默认为类名且不区分大小写*/
+        select * from tb_user;
+    </select>
+
+    <select id="selectById" resultMap="userResultMapper">
+        select * from tb_user where id = #{id};
+    </select>
+</mapper>
